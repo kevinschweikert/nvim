@@ -19,8 +19,6 @@ vim.o.expandtab = true
 vim.o.scrolloff = 8
 
 
---vim.o.expandTab = true
-
 vim.g.mapleader = " "
 vim.api.nvim_set_keymap('n', '<Leader>ff', ':NvimTreeToggle<CR>', {noremap =true})
 vim.api.nvim_set_keymap('n', '<Leader>p', ':Telescope find_files<CR>', {noremap =true})
@@ -30,6 +28,7 @@ vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h',{})
 vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j',{})
 vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k',{})
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l',{})
+vim.api.nvim_set_keymap('n', '<C-w>', ':bd<CR>',{noremap = true})
 
 vim.api.nvim_set_keymap('n', '<A-j>', ':m .+1<CR>==', {noremap =true})
 vim.api.nvim_set_keymap('n', '<A-j>', ':m .-2<CR>==', {noremap =true})
@@ -41,6 +40,11 @@ vim.api.nvim_set_keymap('n', '<C-Right>', ':vertical resize +2<CR>', {noremap =t
 
 vim.api.nvim_set_keymap('i', '<A-k>', '<Esc>:m .+1<CR>==gi', {noremap =true})
 vim.api.nvim_set_keymap('i', '<A-k>', '<Esc>:m .-2<CR>==gi', {noremap =true})
+
+vim.g.dashboard_default_executive = "telescope"
+vim.g.nvim_tree_auto_open = 1
+vim.g.nvim_tree_auto_close = 1
+vim.g.nvim_tree_quit_on_open = 1
 
 
 require('lualine').setup{
