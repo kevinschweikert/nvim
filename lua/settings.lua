@@ -22,6 +22,8 @@ vim.o.scrolloff = 8
 vim.g.mapleader = " "
 vim.api.nvim_set_keymap('n', '<Leader>ff', ':NvimTreeToggle<CR>', {noremap =true})
 vim.api.nvim_set_keymap('n', '<Leader>p', ':Telescope find_files<CR>', {noremap =true})
+vim.api.nvim_set_keymap('n', '<Leader>g', ':Telescope grep_string<CR>', {noremap =true})
+vim.api.nvim_set_keymap('n', '<Leader>r', ':Telescope lsp_references<CR>', {noremap =true})
 vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', {noremap =true})
 vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprev<CR>', {noremap =true})
 vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h',{})
@@ -42,10 +44,6 @@ vim.api.nvim_set_keymap('i', '<A-k>', '<Esc>:m .+1<CR>==gi', {noremap =true})
 vim.api.nvim_set_keymap('i', '<A-k>', '<Esc>:m .-2<CR>==gi', {noremap =true})
 
 vim.g.dashboard_default_executive = "telescope"
-vim.g.nvim_tree_auto_open = 1
-vim.g.nvim_tree_auto_close = 1
-vim.g.nvim_tree_quit_on_open = 1
-
 
 require('lualine').setup{
 	options = {
@@ -156,4 +154,50 @@ local cmp = require'cmp'
     completeopt = 'menu,menuone,noinsert',
     }
   })
+
+vim.g.nvim_tree_quit_on_open = 1 
+vim.g.nvim_tree_indent_markers = 1
+
+require'nvim-tree'.setup {
+      disable_netrw       = true,
+      hijack_netrw        = true,
+      open_on_setup       = false,
+      ignore_ft_on_setup  = {},
+      update_to_buf_dir   = {
+        enable = true,
+        auto_open = true,
+      },
+      auto_close          = true,
+      open_on_tab         = false,
+      hijack_cursor       = false,
+      update_cwd          = false,
+      diagnostics         = {
+        enable = false,
+        icons = {
+          hint = "",
+          info = "",
+          warning = "",
+          error = "",
+        }
+      },
+      update_focused_file = {
+        enable      = false,
+        update_cwd  = false,
+        ignore_list = {}
+      },
+      system_open = {
+        cmd  = nil,
+        args = {}
+      },
+      view = {
+        width = 30,
+        height = 30,
+        side = 'left',
+        auto_resize = false,
+        mappings = {
+          custom_only = false,
+          list = {}
+        }
+      }
+    }
 
