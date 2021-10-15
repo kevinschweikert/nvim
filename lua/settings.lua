@@ -1,4 +1,6 @@
 vim.cmd('colorscheme onedark')
+vim.cmd('set termguicolors')
+vim.cmd('syntax on')
 vim.wo.number = true
 vim.o.autoindent = true
 vim.o.smarttab = true
@@ -26,19 +28,9 @@ vim.api.nvim_set_keymap('n', '<Leader>g', ':Telescope grep_string<CR>', {noremap
 vim.api.nvim_set_keymap('n', '<Leader>r', ':Telescope lsp_references<CR>', {noremap =true})
 vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', {noremap =true})
 vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprev<CR>', {noremap =true})
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h',{})
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j',{})
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k',{})
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l',{})
-vim.api.nvim_set_keymap('n', '<C-w>', ':bd<CR>',{noremap = true})
 
 vim.api.nvim_set_keymap('n', '<A-j>', ':m .+1<CR>==', {noremap =true})
 vim.api.nvim_set_keymap('n', '<A-j>', ':m .-2<CR>==', {noremap =true})
-
-vim.api.nvim_set_keymap('n', '<C-Up>', ':resize -2<CR>', {noremap =true})
-vim.api.nvim_set_keymap('n', '<C-Down>', ':resize +2<CR>', {noremap =true})
-vim.api.nvim_set_keymap('n', '<C-Left>', ':vertical resize -2<CR>', {noremap =true})
-vim.api.nvim_set_keymap('n', '<C-Right>', ':vertical resize +2<CR>', {noremap =true})
 
 vim.api.nvim_set_keymap('i', '<A-k>', '<Esc>:m .+1<CR>==gi', {noremap =true})
 vim.api.nvim_set_keymap('i', '<A-k>', '<Esc>:m .-2<CR>==gi', {noremap =true})
@@ -72,7 +64,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  -- buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)

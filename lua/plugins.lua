@@ -34,4 +34,5 @@ return require('packer').startup(function(use)
 	    requires = 'kyazdani42/nvim-web-devicons'
 	}
     use "glepnir/dashboard-nvim"
+    use 'christoomey/vim-tmux-navigator'
 end)
